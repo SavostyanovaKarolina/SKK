@@ -1,0 +1,249 @@
+using System;
+class P 
+{
+    static void Main() 
+    {
+        OneDimArr oneDimArr = new OneDimArr(10);
+        Console.WriteLine("Среднее по массиву:" + oneDimArr.Avg().ToString());
+        oneDimArr.Del(100);
+        Console.WriteLine("Среднее по массиву:" + oneDimArr.Avg().ToString());
+        oneDimArr.Rep();
+        Console.WriteLine("Среднее по массиву:" + oneDimArr.Avg().ToString());
+        TwoDimArr twoDimArr = new TwoDimArr(3,5);
+        Console.WriteLine("Среднее по массиву:" + twoDimArr.Avg().ToString());
+        twoDimArr.Output();
+        Console.WriteLine();
+        twoDimArr.Output(true);
+        StepArr stepArr = new StepArr(3, true);
+        Console.WriteLine("Среднее по массиву:" + stepArr.Avg().ToString());
+        Console.WriteLine("Средние по массивам:");
+        stepArr.StepAvg();
+        stepArr.Mult();
+        Console.WriteLine("Средние по массивам:");
+        stepArr.StepAvg();
+
+
+  }
+}
+class OneDimArr
+{
+    private int[] ar;
+
+    public OneDimArr(int len, bool input = false)
+    {
+        Random rand = new Random();
+        ar = new int[len];
+        for(int i = 0; i < len; i++)
+        {
+            if (input)
+            {
+                Console.WriteLine("Введите число");
+                ar[i] = int.Parse(Console.ReadLine());    
+            }
+            else
+            {
+                ar[i] = rand.Next(0,200);
+            }
+        }
+    }
+    
+    public double Avg()
+    {
+        int sum = 0;
+        for(int i = 0; i < ar.Length; i++)
+        {
+            sum += ar[i];
+        }
+        return (1.0 * sum) / ar.Length;
+    }
+    
+    public void Del(int mod)
+    {
+        int newlen = 0;
+        int[] ar2 = new int[ar.Length];
+        for(int i = 0; i < ar.Length; i++)
+        {
+            if ((ar[i] <= mod) && (ar[i] >= -mod))
+            {
+                newlen ++;
+            }
+            ar2[i] = ar[i];
+        }
+        ar = new int[newlen];
+        int j = 0;
+        for(int i = 0; i < ar2.Length; i++)
+        {
+            if ((ar2[i] <= mod) && (ar2[i] >= -mod))
+            {
+                ar[j] = ar2[i];
+                j++;
+            }
+        }
+        /*for(int i = 0; i < ar.Length; i++)
+        {
+            Console.WriteLine(ar[i]);
+        }*/
+    }
+    
+    public void Rep()
+    {
+        int n;
+        int[] ar2 = new int[ar.Length];
+        int Len = 0;
+        for(int i = 0; i < ar.Length; i++)
+        {
+            n = 1;
+            for(int j = 0; j < i; j++)
+            {  
+                if(ar[j] == ar[i])
+                {
+                    n = 0;
+                }
+            }
+            if(n == 1)
+            {
+                ar2[Len] = ar[i];
+                Len++;
+            }
+        }
+        ar = new int [Len];
+        for(int i = 0; i < ar.Length; i++)
+        {
+            ar[i] = ar2[i];
+        }
+
+    }
+}
+class TwoDimArr
+{
+    private int[,] matrix;
+    private int Width;
+    private int Height;
+    
+    public TwoDimArr(int height, int width,bool input = false)
+    {
+        Random rand = new Random();
+        matrix = new int[height,width];
+        Width = width;
+        Height = height;
+        for(int i = 0; i < height; i++)
+        {
+            for(int j = 0; j < width; j++)
+            {
+                if(input)
+                {
+                    Console.WriteLine("Введите [" + i.ToString() + "," + j.ToString() + "]");
+                    matrix[i,j] = int.Parse(Console.ReadLine());  
+                }
+                else
+                {
+                    matrix[i,j] = rand.Next(0,200);
+                }
+            }
+        }
+    }
+    
+    public double Avg()
+    {
+        int Sum = 0;
+        for(int i =0; i < Height; i++)
+        {
+            for(int j =0; j < Width; j++)
+            {
+                Sum += matrix[i,j];
+            }
+        }
+        return (1.0 * Sum) / (Width*Height);
+    }
+    
+    public void Output(bool reverse = false)
+    {
+        for(int i = 0; i < Height; i++)
+        {
+            for(int j = 0; j < Width; j++)
+            {
+                if (reverse && i % 2 == 0)
+                {
+                    Console.Write(matrix[i,Width - j - 1] + "\t");
+                }
+                else
+                {
+                    Console.Write(matrix[i,j] + "\t");
+                }
+            }
+            Console.WriteLine();
+        }
+
+    }
+}
+class StepArr
+{
+    private int[][] step;
+    private int Height;
+    
+    public StepArr(int height,bool input = false)
+    {
+        Random rand = new Random();
+        step = new int[height][];
+        Height = height;
+        for(int i = 0; i < height; i++)
+        {
+            step[i] = new int [i + 1];
+            for(int j = 0; j <= i; j++)
+            {
+                if(input)
+                {
+                    Console.WriteLine("Введите [" + i.ToString() + "," + j.ToString() + "]");
+                    step[i][j] = int.Parse(Console.ReadLine());  
+                }
+                else
+                {
+                    step[i][j] = rand.Next(0,200);
+                }
+            }
+        }
+    }
+    
+    public double Avg()
+    {
+        int Sum = 0;
+        int Count = 0;
+        for(int i = 0; i < Height; i++)
+        {
+            for(int j = 0; j < step[i].Length; j++)
+            {
+                Sum += step[i][j];
+                Count++;
+            }
+        }
+        return ((1.0 * Sum) / Count);
+    }
+    
+    public void StepAvg()
+    {
+        int Sum = 0;
+        for(int i = 0; i < Height; i++)
+        {
+            Sum = 0;
+            for(int j = 0; j < step[i].Length; j++)
+            {
+                Sum += step[i][j];
+            }
+            Console.WriteLine((1.0 * Sum) / step[i].Length);
+        }
+    }
+    
+    public void Mult()
+    {
+        for(int i = 0; i < Height; i++)
+        {
+            for(int j = 0; j < step[i].Length; j++)
+            {
+                if(step[i][j] % 2 == 0)
+                {
+                    step[i][j] = i * j;
+                }
+            }
+        }
+    }
+}
