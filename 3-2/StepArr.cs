@@ -24,7 +24,7 @@ sealed class StepArr : BaseArray
     }
 
 
-   public override void Input()
+   private protected override void Input()
    {
        for(int i =0; i < Height; i++)
        {
@@ -35,7 +35,7 @@ sealed class StepArr : BaseArray
        }
    }
   
-   public override void Rand()
+   private protected override void Rand()
    {
        Random rand = new Random();
        for(int i = 0; i < Height; i++)

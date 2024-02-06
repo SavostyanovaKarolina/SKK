@@ -17,7 +17,7 @@ sealed class OneDimArr : BaseArray
        }
    }
 
-   public override void Input()
+   private protected override void Input()
    {
        Console.WriteLine(ar);
        for (int i = 0; i < Len; i++)
@@ -38,7 +38,7 @@ sealed class OneDimArr : BaseArray
    }
 
 
-   public override void Rand()
+   private protected override void Rand()
    {
        Random rand = new Random();
        for(int i = 0; i < Len; i++)
