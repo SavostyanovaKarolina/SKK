@@ -3,21 +3,14 @@ class P
 {
    static void Main()
    {
-       BaseArray one = new OneDimArr(5);
-       BaseArray two = new TwoDimArr(3,5);
-       BaseArray step = new StepArr(3);
-
-       Console.WriteLine("One dim");
-       one.Output();
-       Console.WriteLine("Avg = " + one.Avg().ToString());
-      
-       Console.WriteLine("Two dim");
-       two.Output();
-       Console.WriteLine("Avg = " + two.Avg().ToString());
-
-       Console.WriteLine("Step");
-       step.Output();
-       Console.WriteLine("Avg = " + step.Avg().ToString());
-
+       BaseArray[] list = [new OneDimArr(5), new TwoDimArr(3,5), new StepArr(3)];
+       string[] names = ["One dim", "Two dim", "Step"];
+       
+       for(int i = 0; i<3; i++)
+       {
+              Console.WriteLine(names[i]);
+              list[i].Output();
+              Console.WriteLine("Avg = " + list[i].Avg().ToString());
+       }       
     }
 }

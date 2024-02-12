@@ -19,7 +19,7 @@ sealed class TwoDimArr : BaseArray
                    Rand();
                }
    }
-   private protected override void Input()
+   protected override void Input()
    {
        for(int i =0; i < Height; i++)
        {
@@ -42,7 +42,7 @@ sealed class TwoDimArr : BaseArray
        return (1.0 * Sum) / (Width*Height);
    }
   
-   private protected override void Rand()
+   protected override void Rand()
    {
        Random rand = new Random();
        for(int i = 0; i < Height; i++)
