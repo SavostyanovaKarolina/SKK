@@ -1,0 +1,7 @@
+C:\Users\savos\OneDrive\Рабочий стол\GIT\34\obj\Debug\34.csproj.AssemblyReference.cache
+C:\Users\savos\OneDrive\Рабочий стол\GIT\34\obj\Debug\34.csproj.CoreCompileInputs.cache
+C:\Users\savos\OneDrive\Рабочий стол\GIT\34\bin\Debug\34.exe.config
+C:\Users\savos\OneDrive\Рабочий стол\GIT\34\bin\Debug\34.exe
+C:\Users\savos\OneDrive\Рабочий стол\GIT\34\bin\Debug\34.pdb
+C:\Users\savos\OneDrive\Рабочий стол\GIT\34\obj\Debug\34.exe
+C:\Users\savos\OneDrive\Рабочий стол\GIT\34\obj\Debug\34.pdb
